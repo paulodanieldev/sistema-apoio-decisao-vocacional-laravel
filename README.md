@@ -109,11 +109,16 @@ docker-compose exec app php artisan passport:install
 
 ### Possíveis erros
 
--   erro cross-env/cross-spaw ao rodar "npm run dev", executar os seguintes passos
+-   erro: sem conexão com o banco ao acessar o sistema com docker, tentar os seguintes passos
+    se a senha e usuario nas configs do database estiver setada como root (senha e user de admin), mudar para qualquer outra senha e usuário
+    excluir a pasta "data" dentro do diretório .docker
+    rodar novamente o comando: docker-compose up -d --build
+    e por fim rodar novamente as migrations: docker-compose exec app php artisan migrate
+-   erro: cross-env/cross-spaw ao rodar "npm run dev", executar os seguintes passos
     rm -rf node_modules
     rm package-lock.json
     npm install
--   erro Host '172.18.0.1' is not allowed to connect to this MySQL server, ao tentar conectar ao banco de dados
+-   erro: Host '172.18.0.1' is not allowed to connect to this MySQL server, ao tentar conectar ao banco de dados
     o ip configurado para a variavel DB_HOST no .env deve ser o ip publico da instancia da aws ou o ip local da maquina
     depois deve matar o container: docker-compose down (ou apenas "make down")
     depois remover a pasta dos volumes do docker: sudo rm -rf .docker/data/
@@ -156,7 +161,7 @@ npm run watch
 Acessar (substitua o 127.0.0.1 por seu ip público):
 
 ```
-127.0.0.1:8088
+127.0.0.1:8010
 ```
 
 ## 🌳 Branchs

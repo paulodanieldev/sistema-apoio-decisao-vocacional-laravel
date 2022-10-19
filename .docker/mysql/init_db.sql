@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS app_vocacional;
+CREATE DATABASE IF NOT EXISTS app_vocacional_db;

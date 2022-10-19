@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install zip
 
 RUN pecl install redis \
     && docker-php-ext-enable redis
