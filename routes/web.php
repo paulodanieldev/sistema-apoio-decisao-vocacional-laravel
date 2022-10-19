@@ -1,5 +1,8 @@
 <?php
 
+use App\Constants\AccountTypePrefixConstants;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::group(['namespace' => 'App\Http\Controllers'],function () {
+    $accountTypesConstants = AccountTypePrefixConstants::getConstants();
+    Route::group(['middleware' =>['auth', 'check.account.type'], 'prefix'=>$accountTypesConstants[AccountTypePrefixConstants::USER]],function () {
+        Route::get('/dashboard', 'User\HomeController@index');//->name('user.dashboard');
+    });
+});
