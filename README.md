@@ -1,66 +1,186 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# AVA
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 💻 Pré-requisitos
 
-## About Laravel
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Ter PHP instalado na versão 7.4
+-   git instalado
+-   Composer instalado globalmente
+-   Npm instalado globalmente
+-   Apache instalado com mod_rewrite
+-   Mysql na versão 5.7 ou superior
+-   criar chave ssh: https://pplware.sapo.pt/tutoriais/criar-chave-ssh-no-linux/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 💻 Pré-requisitos para Docker
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   criar instancia com ununtu 20.04 lts (testado)
+-   abrir as portas tcp: 80, 8080, 3306, 3308 (na area de redes/network) nginx e mysql (caso não sejam a padrão) configurada no docker-compose-yml
+-   adicionar memória swap para evitar travamentos durante a instalação: https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04-pt
+-   instalar o docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt
+-   caso precise altenha a senha do usuario: sudo passwd usuario
+-   instalar docker-compose: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt
+-   git instalado
+-   configurar o DB_HOST (MEMCACHED_HOST e REDIS_HOST também se nescessário) no .env (utilizar o ipv4 publico do servidor ou o local da máquina)
 
-## Learning Laravel
+## 🌳 Configurando o seu usuário no github ou bitbucket e clonando
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   criar chave no servidor: https://pplware.sapo.pt/tutoriais/criar-chave-ssh-no-linux/
+-   adicionar a chave publica às configurações de seu usuário no repositório
+-   Clonar o repositório com: git clone git@github.com:paulodanieldev/sistema-apoio-decisao-vocacional-laravel.git
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Instalando em servidor php
 
-## Laravel Sponsors
+Instalar dependências (na pasta do projeto):
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+composer install
+```
 
-### Premium Partners
+Instalando assets
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+```
+npm install && npm run dev
+```
 
-## Contributing
+Criar seu próprio .env (com os seus dados):
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+cp .env.example .env
+```
 
-## Code of Conduct
+Instalar chave:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+Instalar o banco de dados mysql seguindo orientações.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Rodar a Migrate:
 
-## License
+```
+php artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Gerar as chaves de autenticação (OAuth Keys).
+
+```
+php artisan passport:install
+```
+
+## 🚀 Instalando com docker na aws
+
+Atualizar o servidor
+
+```
+sudo apt-get update && sudo apt-get upgrade
+```
+
+Instalar o make.
+
+```
+sudo apt-get install make
+```
+
+Instalar o install.sh ou executar maualmente os comandos contidos nele (na pasta do projeto).
+
+```
+./install.sh
+```
+
+Rodar as migrations - para criação de um banco de dados novo (na pasta do projeto).
+
+```
+docker-compose exec app php artisan migrate --path=/database/migrations/backup
+```
+
+Rodar as migrations - para banco existente ou após criar as novas tabelas (cria as tabelas de OAuth).
+
+```
+docker-compose exec app php artisan migrate
+```
+
+Gerar as chaves de autenticação (OAuth Keys).
+
+```
+docker-compose exec app php artisan passport:install
+```
+
+### Possíveis erros
+
+-   erro cross-env/cross-spaw ao rodar "npm run dev", executar os seguintes passos
+    rm -rf node_modules
+    rm package-lock.json
+    npm install
+-   erro Host '172.18.0.1' is not allowed to connect to this MySQL server, ao tentar conectar ao banco de dados
+    o ip configurado para a variavel DB_HOST no .env deve ser o ip publico da instancia da aws ou o ip local da maquina
+    depois deve matar o container: docker-compose down (ou apenas "make down")
+    depois remover a pasta dos volumes do docker: sudo rm -rf .docker/data/
+    e por fim iniciar o container novamente: docker-compose up -d (ou apenas make up)
+
+## ☕ Usando o sistema local
+
+Iniciando servidor
+
+```
+php artisan serve
+```
+
+Ativando compilador
+
+```
+npm run watch
+```
+
+Acessar:
+
+```
+127.0.0.1:8000
+```
+
+## ☕ Usando o sistema com Docker
+
+Iniciando servidor
+
+```
+docker-compose up -d (ou apenas make up)
+```
+
+Ativando compilador
+
+```
+npm run watch
+```
+
+Acessar (substitua o 127.0.0.1 por seu ip público):
+
+```
+127.0.0.1:8088
+```
+
+## 🌳 Branchs
+
+1. **MASTER** _Commits que estão em produção_
+2. **DEVELOP** _Commits que estão em homologação prontos antes de irem pra produção_
+3. **APP** _Commits que estão em desenvolvimento e ainda não foram para homologação_
+
+## 📫 Contribuindo para o sistema
+
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+
+Para contribuir com o sistema, siga estas etapas:
+
+1. Bifurque este repositório.
+2. Crie um branch (a partir de develop (front) ou app (api)): `git checkout -b <nome_branch>`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o github: `git push origin <nome_branch>`
+5. Crie a solicitação de pull request para develop (front) ou app (api).
+
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## 📝 Licença
+
+**Todos os direitos reservados | conciatcloud.com**
+
+[⬆ Voltar ao topo](#AVA)<br>
