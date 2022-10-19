@@ -1,19 +1,13 @@
 @section('hero')
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" style="background: url({{ asset('media/hero-bg-2.jpg') }}) top center" class="d-flex flex-column justify-content-center">
         <div class="container">
-        <div class="row">
-            <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div>
-                <h1>App landing page template</h1>
-                <h2>Lorem ipsum dolor sit amet, tota senserit percipitur ius ut, usu et fastidii forensibus voluptatibus. His ei nihil feugait</h2>
-                <a href="#" class="download-btn"><i class="bx bxl-play-store"></i> Google Play</a>
-                <a href="#" class="download-btn"><i class="bx bxl-apple"></i> App Store</a>
-            </div>
-            </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-            <img src="{{ asset('media/hero-img.png') }}" class="img-fluid" alt="">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+            <h1>KnightOne - Create Bootstrap Website Template</h1>
+            <h2>We are team of designers making websites with Bootstrap</h2>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
             </div>
         </div>
         </div>

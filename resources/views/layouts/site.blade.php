@@ -1,6 +1,6 @@
 <!-- =======================================================
-* Template Name: Appland - v4.7.0
-* Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
+* Template Name: KnightOne - v4.9.1
+* Template URL: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 ======================================================== -->
@@ -16,11 +16,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
 
         @yield('header_scripts')
     </head>

@@ -1,18 +1,18 @@
 /**
- * Template Name: Appland - v4.7.0
- * Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
+ * Template Name: KnightOne - v4.9.1
+ * Template URL: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-
-// require("../bootstrap");
 require("bootstrap");
 import Swiper, { Pagination, Autoplay } from "swiper";
 import GLightbox from "glightbox";
+import PureCounter from "@srexi/purecounterjs";
+import Isotope from "isotope-layout";
 window.AOS = require("aos");
 
 (function () {
-    "use strict";
+    ("use strict");
 
     /**
      * Easy selector helper function
@@ -174,89 +174,79 @@ window.AOS = require("aos");
     });
 
     /**
-     * Gallery Slider
+     * Preloader
      */
-    new Swiper(".gallery-slider", {
-        modules: [Pagination, Autoplay],
-        speed: 400,
-        loop: true,
-        centeredSlides: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: "auto",
-        pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-            clickable: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-            },
-            640: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            992: {
-                slidesPerView: 5,
-                spaceBetween: 30,
-            },
-            1200: {
-                slidesPerView: 7,
-                spaceBetween: 30,
-            },
-        },
+    let preloader = select("#preloader");
+    if (preloader) {
+        window.addEventListener("load", () => {
+            preloader.remove();
+        });
+    }
+
+    /**
+     * Initiate glightbox
+     */
+    const glightbox = GLightbox({
+        selector: ".glightbox",
     });
 
     /**
-     * Initiate gallery lightbox
-     */
-    const galleryLightbox = GLightbox({
-        selector: ".gallery-lightbox",
-    });
-
-    /**
-     * Testimonials slider
-     */
-    new Swiper(".testimonials-slider", {
-        modules: [Pagination, Autoplay],
-        speed: 600,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: "auto",
-        pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-            clickable: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 40,
-            },
-
-            1200: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-        },
-    });
-
-    /**
-     * Animation on scroll
+     * Porfolio isotope and filter
      */
     window.addEventListener("load", () => {
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: true,
-            mirror: false,
-        });
+        let portfolioContainer = select(".portfolio-container");
+        if (portfolioContainer) {
+            let portfolioIsotope = new Isotope(portfolioContainer, {
+                itemSelector: ".portfolio-item",
+            });
+
+            let portfolioFilters = select("#portfolio-flters li", true);
+
+            on(
+                "click",
+                "#portfolio-flters li",
+                function (e) {
+                    e.preventDefault();
+                    portfolioFilters.forEach(function (el) {
+                        el.classList.remove("filter-active");
+                    });
+                    this.classList.add("filter-active");
+
+                    portfolioIsotope.arrange({
+                        filter: this.getAttribute("data-filter"),
+                    });
+                },
+                true
+            );
+        }
     });
+
+    /**
+     * Initiate portfolio lightbox
+     */
+    const portfolioLightbox = GLightbox({
+        selector: ".portfolio-lightbox",
+    });
+
+    /**
+     * Portfolio details slider
+     */
+    new Swiper(".portfolio-details-slider", {
+        speed: 400,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "bullets",
+            clickable: true,
+        },
+    });
+
+    /**
+     * Initiate Pure Counter
+     */
+    new PureCounter();
 })();
