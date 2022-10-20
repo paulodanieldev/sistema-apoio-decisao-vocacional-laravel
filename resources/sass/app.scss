@@ -1,8 +1,26 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i");
+
+// Bootstrap-icons
+@import "~bootstrap-icons/font/bootstrap-icons";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Boxicons
+@import "~boxicons/css/boxicons";
+
+// Remixicon
+@import "~remixicon/fonts/remixicon";
+
+// Simple Data Table
+@import "~simple-datatables/dist/style";
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+// theme
+@import "dashboard_theme";
