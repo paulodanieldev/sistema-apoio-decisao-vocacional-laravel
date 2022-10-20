@@ -9,8 +9,8 @@
 @include('dashboard.footer')
 @include('dashboard.header_scripts')
 @include('dashboard.footer_scripts')
-@include('dashboard.user_content')
 @include('dashboard.sidebar.user_sidebar')
+@include('dashboard.sidebar.admin_sidebar')
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -30,8 +30,16 @@
     <body>
         {{-- <div id="site"> --}}
             @yield('header')
-            @yield('user_sidebar')
-            @yield('user_content')
+
+            @switch(Auth::user()->account_type)
+                @case(App\Constants\AccountTypePrefixConstants::ADMIN)
+                    @yield('admin_sidebar')
+                    @break
+                @default
+                    @yield('user_sidebar')
+            @endswitch
+
+            @yield('content')
             @yield('footer')
         {{-- </div> --}}
         @yield('footer_scripts')

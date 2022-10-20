@@ -1,6 +1,6 @@
 @extends('layouts.dashboard_user')
 
-@include('dashboard.user_content')
+@include('user.profile.content')
 @section('content')
-    @yield('user_content')
+    @yield('content')
 @endsection

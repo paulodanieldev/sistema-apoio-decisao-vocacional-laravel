@@ -7,7 +7,7 @@
       <li class="nav-item">
         <a class="nav-link " href="{{ route('user.dashboard') }}">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>Dashboard - Admin</span>
         </a>
       </li><!-- End Dashboard Nav -->
 

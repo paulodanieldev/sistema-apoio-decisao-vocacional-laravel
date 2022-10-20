@@ -26,6 +26,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['namespace' => 'App\Http\Controllers'],function () {
     $accountTypesConstants = AccountTypePrefixConstants::getConstants();
     Route::group(['middleware' =>['auth', 'check.account.type'], 'prefix'=>$accountTypesConstants[AccountTypePrefixConstants::USER]],function () {
-        Route::get('/dashboard', 'User\HomeController@index');//->name('user.dashboard');
+        Route::get('/dashboard', 'User\HomeController@index')->name('user.dashboard');
+        Route::resource('/profile', 'User\ProfileController', ['as' => 'user']);
     });
 });
