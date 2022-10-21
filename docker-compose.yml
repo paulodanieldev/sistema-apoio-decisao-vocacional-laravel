@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+    app:
+        build:
+            args:
+                user: backend
+                uid: 1000
+            context: ./
+            dockerfile: ./.docker/app/Dockerfile
+        image: backend
+        container_name: app-ava-vocacional
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/backend.ini:/usr/local/etc/php/conf.d/backend.ini
+        networks:
+            - backend
+        depends_on:
+            - "mysql"
+
+    mysql:
+        image: mysql:8
+        command: --default-authentication-plugin=mysql_native_password # needed as of mysql 8
+        ports:
+            - "3310:3306"
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: root
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./.docker/mysql:/docker-entrypoint-initdb.d
+            - ./.docker/data:/var/lib/mysql
+        networks:
+            - backend
+
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - 8010:80
+        volumes:
+            - ./:/var/www
+            - ./.docker/nginx:/etc/nginx/conf.d/
+        networks:
+            - backend
+
+networks:
+    backend:
+        driver: bridge
