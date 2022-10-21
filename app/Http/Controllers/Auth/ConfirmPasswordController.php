@@ -27,7 +27,7 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -39,26 +39,4 @@ class ConfirmPasswordController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Add a prefix in the route.
-     *
-     * @return string
-     */
-    public function redirectTo(){
-
-        $userType = Auth::user()->account_type;
-        dd($userType);
-        switch ($userType) {
-            case 1:
-                return '/admin/dashboard';
-                break;
-            case 2:
-                return '/user/dashboard';
-                break;
-            default:
-                return '/login';
-                break;
-        }
-
-    }
 }

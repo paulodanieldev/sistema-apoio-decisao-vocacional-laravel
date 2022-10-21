@@ -27,28 +27,6 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Add a prefix in the route.
-     *
-     * @return string
-     */
-    public function redirectTo(){
-
-        $userType = Auth::user()->account_type;
-
-        switch ($userType) {
-            case 1:
-                return '/admin/dashboard';
-                break;
-            case 2:
-                return '/user/dashboard';
-                break;
-            default:
-                return '/login';
-                break;
-        }
-
-    }
 }
