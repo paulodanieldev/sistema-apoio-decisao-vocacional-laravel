@@ -1,10 +1,10 @@
 @include('dashboard.alerts')
-@include('user.profile.sections.page_title')
-@include('user.profile.sections.profile_card')
-@include('user.profile.sections.profile_tabs')
-@include('user.profile.sections.profile_overview_card')
-@include('user.profile.sections.profile_edit_card')
-@include('user.profile.sections.profile_change_pass_card')
+@include('profile.sections.page_title')
+@include('profile.sections.profile_card')
+@include('profile.sections.profile_tabs')
+@include('profile.sections.profile_overview_card')
+@include('profile.sections.profile_edit_card')
+@include('profile.sections.profile_change_pass_card')
 
 @section('content')
 

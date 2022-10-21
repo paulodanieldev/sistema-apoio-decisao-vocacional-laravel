@@ -37,10 +37,10 @@ Route::group(['namespace' => 'App\Http\Controllers'],function () {
 
     Route::group(['middleware' =>['auth', 'check.account.type', 'verified'], 'prefix'=>$accountTypesConstants[AccountTypePrefixConstants::USER]],function () {
         Route::get('/dashboard', 'User\HomeController@index')->name('user.dashboard');
-        Route::resource('/profile', 'User\ProfileController', ['as' => 'user']);
+        Route::resource('/profile', 'Profile\ProfileController', ['as' => 'user']);
 
         // change password
-        Route::post('/profile/change-password', 'User\ProfileController@changePassword')->name('user.profile.change-password');
+        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('user.profile.change-password');
     });
 
 });
