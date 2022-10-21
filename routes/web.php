@@ -43,4 +43,12 @@ Route::group(['namespace' => 'App\Http\Controllers'],function () {
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('user.profile.change-password');
     });
 
+    Route::group(['middleware' =>['auth', 'check.account.type', 'verified'], 'prefix'=>$accountTypesConstants[AccountTypePrefixConstants::ADMIN]],function () {
+        Route::get('/dashboard', 'Admin\HomeController@index')->name('admin.dashboard');
+        Route::resource('/profile', 'Profile\ProfileController', ['as' => 'admin']);
+
+        // change password
+        Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('admin.profile.change-password');
+    });
+
 });

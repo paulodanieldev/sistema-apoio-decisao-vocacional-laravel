@@ -1,11 +1,11 @@
-@section('user_sidebar')
+@section('admin_sidebar')
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('user.dashboard') }}">
+        <a class="nav-link " href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard - Admin</span>
         </a>
@@ -184,7 +184,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('user.profile.index') }}">
+        <a class="nav-link collapsed" href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_user')
+@extends('layouts.dashboard')
 
 @include('dashboard.user_content')
 @section('content')

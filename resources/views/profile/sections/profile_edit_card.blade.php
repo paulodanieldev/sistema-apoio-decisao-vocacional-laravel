@@ -1,8 +1,8 @@
 @section('profile_edit_card')
 
-  <!-- ======= Profile Edit Card ======= -->
+  <!-- ======= Profile Edit ======= -->
   <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-    <form action="{{ route('user.profile.update', $user->id ) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route($accountType . '.profile.update', $user->id ) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 
@@ -86,6 +86,6 @@
       </div>
     </form><!-- End Profile Edit Form -->
   </div>
-  <!-- End Profile Edit Card -->
+  <!-- End Profile Edit -->
 
 @endsection

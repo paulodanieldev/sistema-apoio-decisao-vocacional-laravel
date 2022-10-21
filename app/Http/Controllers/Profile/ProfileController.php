@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -20,7 +21,9 @@ class ProfileController extends Controller
     {
         try {
             $user = Auth::user();
-            return view('user.profile', ['user'=>$user]);
+            $accountType = UserHelper::getUserAccountType($user);
+
+            return view("{$accountType}.profile", ['user'=>$user, 'accountType'=>$accountType]);
         } catch (\Exception $e) {
             return back()->with('message', 'Erro ao editar!' . $e->getMessage());
         }
@@ -40,9 +43,9 @@ class ProfileController extends Controller
         ]);
 
         try {
-            
-
+    
             $user = User::findOrfail($uuid);
+            $accountType = UserHelper::getUserAccountType($user);
 
             if ($request->delete_profile_image == 1) {
                 $filename = null;
@@ -56,11 +59,7 @@ class ProfileController extends Controller
                 }
             }
 
-            
-
             $user->name = $request->name;
-            // $user->email = $request->email;
-            // $user->password = bcrypt($request->password);
             if (isset($filename)){
                 $user->image = $filename;
             }
@@ -72,8 +71,7 @@ class ProfileController extends Controller
             $user->linkedin_url = $request->linkedin_url;
             $user->save();
 
-            // return redirect('/admin/users/')->with('success','Perfil atualizado com sucesso.');
-            return redirect()->route('user.profile.index')->with('success','Perfil atualizado com sucesso.');
+            return redirect()->route("{$accountType}.profile.index")->with('success','Perfil atualizado com sucesso.');
         }catch (\Exception $e){
             return back()->with('error', 'ERRO: ' . $e->getMessage());
         }

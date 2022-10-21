@@ -4,7 +4,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('user.dashboard') }}" class="logo d-flex align-items-center">
+            <a href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.dashboard') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('media/dashboard/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">NiceAdmin</span>
             </a>
@@ -188,7 +188,7 @@
                     </li>
 
                     {{-- <li>
-                    <a class="dropdown-item d-flex align-items-center" href="{{ route('user.profile.index') }}">
+                    <a class="dropdown-item d-flex align-items-center" href="{{  App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
                         <i class="bi bi-person"></i>
                         <span>My Profile</span>
                     </a>

@@ -3,7 +3,7 @@
   <!-- ======= Profile Change Password Card ======= -->
   <div class="tab-pane fade pt-3" id="profile-change-password">
     <!-- Change Password Form -->
-    <form action="{{ route('user.profile.change-password') }}" method="POST">
+    <form action="{{ route($accountType . '.profile.change-password') }}" method="POST">
       @csrf
 
       <div class="row mb-3">
