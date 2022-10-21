@@ -171,7 +171,12 @@
             <li class="nav-item dropdown pe-3">
 
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <img src="{{ asset('media/dashboard/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                
+                @if (Auth::user()->image && file_exists(public_path('uploads/profile/img/').Auth::user()->image))
+                    <img src="{{ asset('uploads/profile/img/'.Auth::user()->image ) }}" alt="Profile" class="rounded">
+                @else
+                    <img src="{{ asset('media/dashboard/profile-img-default.jpg') }}" alt="Profile" class="rounded">
+                @endif
                 <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
             </a><!-- End Profile Iamge Icon -->
 

@@ -6,6 +6,8 @@
  */
 
 require("./bootstrap");
+require("./dashboard/common");
+
 import Quill from "quill";
 import ApexCharts from "apexcharts";
 import { DataTable } from "simple-datatables";

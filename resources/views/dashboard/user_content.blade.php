@@ -1,3 +1,4 @@
+@include('dashboard.alerts')
 @include('dashboard.sections.page_title')
 @include('dashboard.sections.sales_card')
 @include('dashboard.sections.revenue_card')
@@ -13,8 +14,8 @@
 @section('user_content')
 
     <main id="main">
+        @yield('alerts')
         @yield('page_title')
-
         <section class="section dashboard">
             <div class="row">
                 <!-- Left side columns -->

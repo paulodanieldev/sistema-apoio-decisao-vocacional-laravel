@@ -1,3 +1,4 @@
+@include('dashboard.alerts')
 @include('user.profile.sections.page_title')
 @include('user.profile.sections.profile_card')
 @include('user.profile.sections.profile_tabs')
@@ -8,6 +9,7 @@
 @section('content')
 
     <main id="main" class="main">
+        @yield('alerts')
         @yield('page_title')
         <section class="section profile">
             <div class="row">

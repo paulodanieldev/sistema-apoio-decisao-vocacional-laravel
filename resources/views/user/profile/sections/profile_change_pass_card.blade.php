@@ -3,26 +3,27 @@
   <!-- ======= Profile Change Password Card ======= -->
   <div class="tab-pane fade pt-3" id="profile-change-password">
     <!-- Change Password Form -->
-    <form>
+    <form action="{{ route('user.profile.change-password') }}" method="POST">
+      @csrf
 
       <div class="row mb-3">
-        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
         <div class="col-md-8 col-lg-9">
-          <input name="password" type="password" class="form-control" id="currentPassword">
+          <input name="current_password" type="password" class="form-control" id="current_password" required>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+        <label for="new_password" class="col-md-4 col-lg-3 col-form-label">New Password</label>
         <div class="col-md-8 col-lg-9">
-          <input name="newpassword" type="password" class="form-control" id="newPassword">
+          <input name="new_password" type="password" class="form-control" id="new_password" required>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+        <label for="new_password_confirmation" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
         <div class="col-md-8 col-lg-9">
-          <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+          <input name="new_password_confirmation" type="password" class="form-control" id="new_password_confirmation" required>
         </div>
       </div>
 
