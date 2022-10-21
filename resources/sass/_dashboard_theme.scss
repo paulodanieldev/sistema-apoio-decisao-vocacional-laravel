@@ -653,6 +653,15 @@ h6 {
     }
 }
 
+@media (min-width: 1200px) {
+    .simple {
+        #main,
+        #footer {
+            margin-left: 0px !important;
+        }
+    }
+}
+
 @media (max-width: 1199px) {
     .toggle-sidebar .sidebar {
         left: 0;

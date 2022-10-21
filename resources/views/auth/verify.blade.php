@@ -1,28 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_user_simple')
+@include('dashboard.alerts')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+<main id="main">
+    <div class="container">
+        <section class="section d-flex flex-column align-items-center justify-content-center">
+            <!-- Special title treatmen -->
+            <div class="card text-center">
+                <div class="card-body my-3">
+                    @yield('alerts')
+                    <h5 class="card-title">{{ __('Verify Your Email Address') }}</h5>
+                    <p class="card-text">{{ __('Before proceeding, please check your email for a verification link.') }}
+                        {{ __('If you did not receive the email') }}.</p>
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-primary">{{ __('click here to request another') }}</button>.
                     </form>
                 </div>
             </div>
-        </div>
+            <!-- End Special title treatmen -->
+        </section>
     </div>
-</div>
+</main><!-- End #main -->
+
 @endsection
