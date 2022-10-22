@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class QuizUserAnswers extends Controller
+class SchoolSubjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
