@@ -11,7 +11,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -115,50 +115,9 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
+      </li><!-- End Forms Nav --> --}}
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html">
-              <i class="bi bi-circle"></i><span>Data Tables</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Chart.js</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>ApexCharts</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>ECharts</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Charts Nav -->
-
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -179,9 +138,9 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Icons Nav -->
+      </li><!-- End Icons Nav --> --}}
 
-      <li class="nav-heading">Pages</li>
+      {{-- <li class="nav-heading">Pages</li> --}}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
@@ -192,12 +151,63 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
+          <i class="bi bi-people"></i>
+          <span>Users</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li><!-- End Users Page Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#school-reports-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-file-earmark-ruled"></i><span>School Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="school-reports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="school-reports-general.html">
+              <i class="bi bi-circle"></i><span>General School Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="school-reports-data.html">
+              <i class="bi bi-circle"></i><span>School Levels</span>
+            </a>
+          </li>
+          <li>
+            <a href="school-reports-data.html">
+              <i class="bi bi-circle"></i><span>School Grades</span>
+            </a>
+          </li>
+          <li>
+            <a href="school-reports-data.html">
+              <i class="bi bi-circle"></i><span>School Subjects</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End School Reports Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#quiz-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-card-checklist"></i><span>Quiz</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="quiz-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="quiz-chartjs.html">
+              <i class="bi bi-circle"></i><span>General Quiz</span>
+            </a>
+          </li>
+          <li>
+            <a href="quiz-apexquiz.html">
+              <i class="bi bi-circle"></i><span>Quiz Type</span>
+            </a>
+          </li>
+          <li>
+            <a href="quiz-equiz.html">
+              <i class="bi bi-circle"></i><span>Quiz Questions Type</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Quiz Nav -->
+
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
@@ -230,7 +240,7 @@
           <i class="bi bi-file-earmark"></i>
           <span>Blank</span>
         </a>
-      </li><!-- End Blank Page Nav -->
+      </li><!-- End Blank Page Nav --> --}}
 
     </ul>
 
