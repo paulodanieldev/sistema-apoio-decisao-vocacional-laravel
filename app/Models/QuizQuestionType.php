@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class QuizQuestionsType extends Model
+class QuizQuestionType extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -16,7 +16,7 @@ class QuizQuestionsType extends Model
      *
      * @var string
      */
-    protected $table = 'quiz_questions_type';
+    protected $table = 'quiz_question_type';
 
     /**
      * The attributes that are mass assignable.
