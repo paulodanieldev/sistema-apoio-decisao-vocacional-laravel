@@ -240,7 +240,6 @@ window.rowEdit = (but) => {
         } else if (td.data("type") == "select") {
             const dataMaster = td.attr("for");
             const data = $(`#${dataMaster}`).data("val");
-
             const options = Object.keys(data)
                 .map((key) => {
                     return `<option value="${key}"${
@@ -327,6 +326,10 @@ window.rowElim = (but) => {
 
 window.rowAddNew = (tabId) => {
     const tab_en_edic = $("#" + tabId);
+
+    // return if the last row is in edit mode
+    if (tab_en_edic.find("tr:last").attr("id")) return false;
+
     const filas = tab_en_edic.find("tbody tr");
 
     if (!filas.length) {
@@ -341,9 +344,9 @@ window.rowAddNew = (tabId) => {
                     htmlDat +
                     `<td data-name="${$(this).attr(
                         "data-name"
-                    )}" data-type="${$(this).attr(
-                        "data-type"
-                    )}" data-val=""></td>`;
+                    )}" data-type="${$(this).attr("data-type")}" for="${
+                        $(this).attr("for") ?? ""
+                    }" data-val=""></td>`;
             }
         });
         tab_en_edic.find("tbody").append("<tr>" + htmlDat + "</tr>");
