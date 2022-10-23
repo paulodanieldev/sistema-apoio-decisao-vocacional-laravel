@@ -5,7 +5,7 @@
     <div class="my-4" data-school-report-id="{{ $id }}" id="table-coop-details">
         <input type="hidden" id="subjects-data-json" data-val="{{ json_encode($subjects) }}">
         <h5 class="mb-4">Médias finais da avaliação</h5>
-        <table class="table table-striped mt-3" id="school-reports-grades-table-list">
+        <table class="table table-striped mt-3" @if(!$readonly) id="school-reports-grades-table-list" @endif>
             <thead>
                 <tr>
                     <th data-name="school_subject_id" data-type="select" scope="col" for="subjects-data-json">Matéria</th>
@@ -21,6 +21,8 @@
                 @endforeach
             </tbody>
         </table>
-        <button class="btn btn-primary" id="add">Adicionar média</button>
+        @if (!$readonly)
+            <button class="btn btn-primary" id="add">Adicionar média</button>
+        @endif
     </div>
 </div>

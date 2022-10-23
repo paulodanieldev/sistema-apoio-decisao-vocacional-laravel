@@ -31,6 +31,17 @@
                                 @csrf
                                 @method('POST')
 
+                                <div class="col-md-12">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="user_id" aria-label="State" name="user_id" required>
+                                            <option value=""></option>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->id }}" @if(!empty(old('user_id') && $user->id == old('user_id'))) selected @endif>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="user_id">Usuário</label>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" id="school_year" placeholder="{{ date('Y') }}" name="school_year" required value="{{ old('school_year') }}">

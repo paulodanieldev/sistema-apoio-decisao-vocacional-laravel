@@ -50,7 +50,9 @@ class SchoolReportsController extends Controller
     {
         $schoolLevels = SchoolLevels::all();
         $schoolGrades = SchoolGrades::all();
-        return view('admin.schoolReport.create', ['schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades]);
+        $users = User::where('account_type','=', AccountTypePrefixConstants::USER)->get();
+        
+        return view('admin.schoolReport.create', ['schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades, 'users' => $users]);
     }
 
     /**
@@ -61,13 +63,15 @@ class SchoolReportsController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-
+        // $user = Auth::user();
         $request->validate([
-            'school_year' => 'required|unique:school_reports,school_year,NULL,id,user_id,'.$user->id,
-            'school_level_id' => 'required|unique:school_reports,school_level_id,NULL,id,school_year,'.$request->school_year.',user_id,'.$user->id,
-            'school_grade_id' => 'required|unique:school_reports,school_grade_id,NULL,id,school_year,'.$request->school_year.',user_id,'.$user->id,
+            'user_id' => 'required|exists:users,id',
+            'school_year' => 'required|unique:school_reports,school_year,NULL,id,user_id,'.$request->user_id,
+            'school_level_id' => 'required|unique:school_reports,school_level_id,NULL,id,school_year,'.$request->school_year.',user_id,'.$request->user_id,
+            'school_grade_id' => 'required|unique:school_reports,school_grade_id,NULL,id,school_year,'.$request->school_year.',user_id,'.$request->user_id,
         ], [
+            'user_id.required' => 'O campo Usuário é obrigatório.',
+            'user_id.exists' => 'Usuário não encontrado.',
             'school_year.required' => 'O campo ano letivo é obrigatório.',
             'school_year.unique' => 'Já existe um histórico escolar cadastrado para o ano letivo informado.',
             'school_level_id.required' => 'O campo nível escolar é obrigatório.',
@@ -78,7 +82,8 @@ class SchoolReportsController extends Controller
 
         try {
             $item = new SchoolReports();
-            $item->user_id = $user->id;
+            // $item->user_id = $user->id;
+            $item->user_id = $request->user_id;
             $item->school_year = $request->school_year;
             $item->school_level_id = $request->school_level_id;
             $item->school_grade_id = $request->school_grade_id;
@@ -101,9 +106,11 @@ class SchoolReportsController extends Controller
         try {
             $schoolLevels = SchoolLevels::all();
             $schoolGrades = SchoolGrades::all();
+            $schoolSubjects = SchoolSubjects::all()->pluck('name', 'id')->toArray();
             $item = SchoolReports::findOrFail($id);
+            $users = User::where('account_type','=', AccountTypePrefixConstants::USER)->get();
 
-            return view('admin.schoolReport.show', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades]);
+            return view('admin.schoolReport.show', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades, 'schoolSubjects' => $schoolSubjects, 'users' => $users ]);
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao editar!' . $e->getMessage());
         }
@@ -122,8 +129,9 @@ class SchoolReportsController extends Controller
             $schoolGrades = SchoolGrades::all();
             $schoolSubjects = SchoolSubjects::all()->pluck('name', 'id')->toArray();
             $item = SchoolReports::with('schoolReportsGrades')->findOrFail($id);
+            $users = User::where('account_type','=', AccountTypePrefixConstants::USER)->get();
 
-            return view('admin.schoolReport.edit', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades, 'schoolSubjects' => $schoolSubjects]);
+            return view('admin.schoolReport.edit', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades, 'schoolSubjects' => $schoolSubjects, 'users' => $users ]);
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao editar!' . $e->getMessage());
         }
@@ -138,13 +146,16 @@ class SchoolReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
-//validate school_year unique for user and school_grade_id unique for school_year and school_level_id just required
+        // $user = Auth::user();
+        //validate school_year unique for user and school_grade_id unique for school_year and school_level_id just required with user validation
         $request->validate([
-            'school_year' => 'required|unique:school_reports,school_year,'.$id.',id,user_id,'.$user->id,
+            'user_id' => 'required|exists:users,id',
+            'school_year' => 'required|unique:school_reports,school_year,'.$id.',id,user_id,'.$request->user_id,
             'school_level_id' => 'required',
-            'school_grade_id' => 'required|unique:school_reports,school_grade_id,'.$id.',id,school_year,'.$request->school_year.',user_id,'.$user->id,
+            'school_grade_id' => 'required|unique:school_reports,school_grade_id,'.$id.',id,school_year,'.$request->school_year.',user_id,'.$request->user_id,
         ], [
+            'user_id.required' => 'O campo Usuário é obrigatório.',
+            'user_id.exists' => 'Usuário não encontrado.',
             'school_year.required' => 'O campo ano letivo é obrigatório.',
             'school_year.unique' => 'Já existe um histórico escolar cadastrado para o ano letivo informado.',
             'school_level_id.required' => 'O campo nível escolar é obrigatório.',
@@ -153,7 +164,7 @@ class SchoolReportsController extends Controller
         ]);
 
         try {
-            $item = new SchoolReports();
+            $item = SchoolReports::findOrFail($id);
             $item->update($request->all());
 
             return back()->with('success', 'Registro atualizado com sucesso.');

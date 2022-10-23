@@ -22,15 +22,21 @@ class SchoolReportsGradesEditableGrid extends Component
     public ?array $subjects;
 
     /**
+     * @var bool
+     */
+    public ?bool $readonly;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $grades = null, $subjects = [])
+    public function __construct($id, $grades = null, $subjects = [], $readonly = false)
     {
         $this->id = $id;
         $this->grades = $grades;
         $this->subjects = $subjects;
+        $this->readonly = $readonly;
     }
 
     /**

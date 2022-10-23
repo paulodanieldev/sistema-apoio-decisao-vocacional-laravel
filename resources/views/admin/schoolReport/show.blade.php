@@ -28,6 +28,18 @@
 
                             <!-- Floating Labels Form -->
                             <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="user_id" aria-label="State" name="user_id" disabled>
+                                            @foreach($users as $user)
+                                                @if($user->id==$item->user_id)
+                                                    <option selected>{{ $user->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <label for="user_id">Usuário</label>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" id="school_year" placeholder="" name="school_year" disabled value="{{ $item->school_year }}">
@@ -63,6 +75,9 @@
                                 </div>
                             </div>
                             <!-- End floating Labels Form -->
+
+                            <!-- Component detail -->
+                            <x-school-reports-grades-editable-grid :id="$item->id" :grades="$item->schoolReportsGrades" :subjects="$schoolSubjects" :readonly="true"/>
 
                         </div>
                     </div>
