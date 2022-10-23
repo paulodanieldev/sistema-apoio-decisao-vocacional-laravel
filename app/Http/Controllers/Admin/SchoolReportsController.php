@@ -8,6 +8,7 @@ use App\Models\SchoolLevels;
 use App\Models\SchoolGrades;
 use App\Models\SchoolReports;
 use App\Models\SchoolReportsGrades;
+use App\Models\SchoolSubjects;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -119,9 +120,10 @@ class SchoolReportsController extends Controller
         try {
             $schoolLevels = SchoolLevels::all();
             $schoolGrades = SchoolGrades::all();
-            $item = SchoolReports::findOrFail($id);
+            $schoolSubjects = SchoolSubjects::all()->pluck('name', 'id')->toArray();
+            $item = SchoolReports::with('schoolReportsGrades')->findOrFail($id);
 
-            return view('admin.schoolReport.edit', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades]);
+            return view('admin.schoolReport.edit', [ 'item' => $item, 'schoolLevels' => $schoolLevels, 'schoolGrades' => $schoolGrades, 'schoolSubjects' => $schoolSubjects]);
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao editar!' . $e->getMessage());
         }

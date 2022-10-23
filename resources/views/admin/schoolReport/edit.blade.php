@@ -66,6 +66,8 @@
                             </form>
                             <!-- End floating Labels Form -->
 
+                            <x-school-reports-grades-editable-grid :id="$item->id" :grades="$item->schoolReportsGrades" :subjects="$schoolSubjects" />
+
                         </div>
                     </div>
                 </div>

@@ -41,4 +41,12 @@ class SchoolReports extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Get the SchoolReportsGrades related
+     */
+    public function SchoolReportsGrades()
+    {
+        return $this->hasMany(SchoolReportsGrades::class, 'school_report_id');
+    }
 }

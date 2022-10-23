@@ -7,6 +7,7 @@
 
 require("./bootstrap");
 require("./dashboard/common");
+require("./bootstable/bootstable");
 
 import Quill from "quill";
 import ApexCharts from "apexcharts";
