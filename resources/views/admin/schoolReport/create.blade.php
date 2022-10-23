@@ -12,7 +12,7 @@
             <h1>Históricos escolares</h1>
             <nav>
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="{{ route('admin.school-reports.index') }}">Históricos escolares</a></li>
                 <li class="breadcrumb-item active">Novo</li>
                 </ol>

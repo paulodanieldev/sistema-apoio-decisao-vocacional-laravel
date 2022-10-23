@@ -6,7 +6,7 @@
 
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.dashboard') }}">Home</a></li>
+        {{-- <li class="breadcrumb-item"><a href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.dashboard') }}">Dashboard</a></li> --}}
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
     </nav>

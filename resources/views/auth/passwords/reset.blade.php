@@ -75,7 +75,7 @@
                 <div class="d-flex justify-content-center py-4">
                     <a href="{{ route('site') }}" class="logo d-flex align-items-center w-auto">
                     <img src="{{ asset('media/dashboard/logo.png') }}" alt="">
-                    <span class="d-none d-lg-block">NiceAdmin</span>
+                    <span class="d-none d-lg-block">AVA - Vocacional</span>
                     </a>
                 </div><!-- End Logo -->
 
@@ -85,7 +85,7 @@
                         <div class="pt-4 pb-2">
                             @yield('alerts')
                             <h5 class="card-title text-center pb-0 fs-4">{{ __('Reset Password') }}</h5>
-                            <p class="text-center small">Enter your email & password to update</p>
+                            <p class="text-center small">Informe seu e-mail e senha para atualizar</p>
                         </div>
                         <form method="POST" action="{{ route('password.update') }}" class="row g-3 needs-validation" novalidate>
                             @csrf
@@ -95,18 +95,18 @@
                                 <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                                     <input type="email" name="email" class="form-control" id="email" value="{{ $email ?? old('email') }}" required autofocus>
-                                    <div class="invalid-feedback">Please enter your email.</div>
+                                    <div class="invalid-feedback">Informe seu email.</div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="password" class="form-label">{{ __('Password') }}</label>
                                 <input type="password" name="password" class="form-control" id="password" required>
-                                <div class="invalid-feedback">Please enter your password!</div>
+                                <div class="invalid-feedback">Digite uma senha!</div>
                             </div>
                             <div class="col-12">
                                 <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
                                 <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
-                                <div class="invalid-feedback">Please enter your password!</div>
+                                <div class="invalid-feedback">Digite uma senha!</div>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100" type="submit">{{ __('Reset Password') }}</button>

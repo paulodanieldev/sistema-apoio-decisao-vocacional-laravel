@@ -11,53 +11,53 @@
                         <div class="d-flex justify-content-center py-4">
                             <a href="{{ route('site') }}" class="logo d-flex align-items-center w-auto">
                             <img src="{{ asset('media/dashboard/logo.png') }}" alt="">
-                            <span class="d-none d-lg-block">NiceAdmin</span>
+                            <span class="d-none d-lg-block">AVA - Vocacional</span>
                             </a>
                         </div><!-- End Logo -->
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="pt-4 pb-2">
                                     @yield('alerts')
-                                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                                    <p class="text-center small">Enter your personal details to create account</p>
+                                    <h5 class="card-title text-center pb-0 fs-4">Criar uma conta</h5>
+                                    <p class="text-center small">Entre com suas informações para criar uma conta</p>
                                 </div>
                                 <form method="POST" action="{{ route('register') }}" class="row g-3 needs-validation" novalidate>
                                     @csrf
                                     <div class="col-12">
                                         <label for="yourName" class="form-label">Your Name</label>
                                         <input type="text" name="name" class="form-control" id="yourName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <div class="invalid-feedback">Informe o seu nome!</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="yourEmail" class="form-label">Your Email</label>
+                                        <label for="yourEmail" class="form-label">Seu email</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
                                             <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                            <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                            <div class="invalid-feedback">Informe um email válido!</div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Password</label>
+                                        <label for="yourPassword" class="form-label">Senha</label>
                                         <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                        <div class="invalid-feedback">Please enter your password!</div>
+                                        <div class="invalid-feedback">Informe uma senha!</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="yourConfirmPassword" class="form-label">Confirm Password</label>
+                                        <label for="yourConfirmPassword" class="form-label">Confirme sua senha</label>
                                         <input type="password" name="password_confirmation" class="form-control" id="yourConfirmPassword" required>
-                                        <div class="invalid-feedback">Please confirm your password!</div>
+                                        <div class="invalid-feedback">Informe sua senha novamente!</div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
                                             <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                            <div class="invalid-feedback">You must agree before submitting.</div>
+                                            <label class="form-check-label" for="acceptTerms">Eu aceito com os <a href="#">termos e condições</a></label>
+                                            <div class="invalid-feedback">Você precisa aceitar para continuar.</div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                        <button class="btn btn-primary w-100" type="submit">Criar conta</button>
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
+                                        <p class="small mb-0">Já possui uma conta? <a href="{{ route('login') }}">Acessar conta</a></p>
                                     </div>
                                 </form>
                             </div>

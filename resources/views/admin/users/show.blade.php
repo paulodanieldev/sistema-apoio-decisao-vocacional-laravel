@@ -12,7 +12,7 @@
             <h1>Usuários</h1>
             <nav>
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="{{ route('admin.users.index') }}">Usuários</a></li>
                 <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
