@@ -242,7 +242,6 @@ window.rowEdit = (but) => {
 
             const options = Object.keys(data)
                 .map((key) => {
-                    console.log(cont, key);
                     return `<option value="${key}"${
                         cont == key ? "selected" : ""
                     }>${data[key]}</option>`;
