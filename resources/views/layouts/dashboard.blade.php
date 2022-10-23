@@ -27,8 +27,9 @@
 
         @yield('header_scripts')
     </head>
-    <body>
-        {{-- <div id="site"> --}}
+    <body >
+        <div id="loader"></div>
+        <div id="site-dashboard">
             @yield('header')
 
             @switch(Auth::user()->account_type)
@@ -41,7 +42,8 @@
 
             @yield('content')
             @yield('footer')
-        {{-- </div> --}}
+        </div>
         @yield('footer_scripts')
     </body>
+
 </html>

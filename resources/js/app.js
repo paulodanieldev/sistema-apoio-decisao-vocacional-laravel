@@ -22,6 +22,14 @@ import * as echarts from "echarts";
 (function () {
     ("use strict");
 
+    window.onload = function () {
+        showPage();
+    };
+    function showPage() {
+        console.log("teste2");
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("site-dashboard").style.display = "block";
+    }
     /**
      * Easy selector helper function
      */
