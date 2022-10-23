@@ -4,8 +4,6 @@ use App\Constants\AccountTypePrefixConstants;
 use App\Http\Controllers\Email\EmailVerificationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,9 +45,11 @@ Route::group(['namespace' => 'App\Http\Controllers'],function () {
         Route::get('/dashboard', 'Admin\HomeController@index')->name('admin.dashboard');
         Route::resource('/profile', 'Profile\ProfileController', ['as' => 'admin']);
         Route::resource('/school-reports', 'Admin\SchoolReportsController', ['as' => 'admin']);
+        Route::resource('/school-subjects', 'Admin\SchoolSubjectsController', ['as' => 'admin']);
 
         // delete routes
         Route::get('/school-reports/{uuid}/delete', 'Admin\SchoolReportsController@destroy')->name('admin.school-reports.delete');
+        Route::get('/school-subjects/{uuid}/delete', 'Admin\SchoolSubjectsController@destroy')->name('admin.school-subjects.delete');
 
         // change password
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('admin.profile.change-password');

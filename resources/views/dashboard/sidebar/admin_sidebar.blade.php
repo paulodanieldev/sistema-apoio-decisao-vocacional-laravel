@@ -48,7 +48,7 @@
             </a>
           </li>
           <li>
-            <a href="school-reports-data.html">
+            <a href="{{ route('admin.school-subjects.index') }}">
               <i class="bi bi-circle"></i><span>Matérias escolares</span>
             </a>
           </li>

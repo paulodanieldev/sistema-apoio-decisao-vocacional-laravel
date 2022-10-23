@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Salvar</button>
-                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Voltar</a>
+                                    <a href="{{ route('admin.school-reports.index') }}" class="btn btn-secondary">Voltar</a>
                                 </div>
                             </form>
                             <!-- End floating Labels Form -->
