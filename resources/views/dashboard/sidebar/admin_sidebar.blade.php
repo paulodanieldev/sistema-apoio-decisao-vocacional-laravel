@@ -38,7 +38,7 @@
             </a>
           </li>
           <li>
-            <a href="school-reports-data.html">
+            <a href="{{ route('admin.school-levels.index') }}">
               <i class="bi bi-circle"></i><span>Níveis escolares</span>
             </a>
           </li>

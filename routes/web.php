@@ -47,11 +47,13 @@ Route::group(['namespace' => 'App\Http\Controllers'],function () {
         Route::resource('/school-reports', 'Admin\SchoolReportsController', ['as' => 'admin']);
         Route::resource('/school-subjects', 'Admin\SchoolSubjectsController', ['as' => 'admin']);
         Route::resource('/school-grades', 'Admin\SchoolGradesController', ['as' => 'admin']);
+        Route::resource('/school-levels', 'Admin\SchoolLevelsController', ['as' => 'admin']);
 
         // delete routes
         Route::get('/school-reports/{uuid}/delete', 'Admin\SchoolReportsController@destroy')->name('admin.school-reports.delete');
         Route::get('/school-subjects/{uuid}/delete', 'Admin\SchoolSubjectsController@destroy')->name('admin.school-subjects.delete');
         Route::get('/school-grades/{uuid}/delete', 'Admin\SchoolGradesController@destroy')->name('admin.school-grades.delete');
+        Route::get('/school-levels/{uuid}/delete', 'Admin\SchoolLevelsController@destroy')->name('admin.school-levels.delete');
 
         // change password
         Route::post('/profile/change-password', 'Profile\ProfileController@changePassword')->name('admin.profile.change-password');
