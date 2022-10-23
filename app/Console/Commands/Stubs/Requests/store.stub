@@ -29,9 +29,7 @@ class StoreRequest extends BaseFormRequest
         $validator->after(function ($validator) {
             if (!$validator->errors()->all()) {
                 $this->merge([
-                    'inputs' => [
-                        'name' => $this->name,
-                    ],
+                    'inputs' => $this->all(),
                 ]);
             }
         });

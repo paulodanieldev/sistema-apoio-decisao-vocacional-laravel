@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 @foreach($grades as $grade)
-                    <tr data-url-uuid="{{ $grade->id }}">
+                    <tr data-url-id="{{ $grade->id }}">
                         <td data-name="school_subject_id" data-type="select" for="subjects-data-json" data-val="{{ $grade->school_subject_id ?? "" }}">{{ $subjects[$grade->school_subject_id] ?? "" }}</td>
                         <td data-name="final_grade_avg" data-type="input" data-val="{{ $grade->final_grade_avg ?? "" }}">{{ $grade->final_grade_avg ?? "" }}</td>
                     </tr>

@@ -1,7 +1,7 @@
 const userInsertOrUpdate = ({ data }) => {
     let apiUrl = !!data.id
-        ? `/api/publics/school/report/grades/${data.id}`
-        : `/api/publics/school/report/grades`;
+        ? `/api/v1/publics/school/reports/grades/${data.id}`
+        : `/api/v1/publics/school/reports/grades`;
     let type = data.id ? "PUT" : "POST";
     let baseUrl = window.location.origin;
 
@@ -9,7 +9,7 @@ const userInsertOrUpdate = ({ data }) => {
 };
 
 const userDelete = ({ data }) => {
-    let apiUrl = `/api/publics/school/report/grades/${data.id}`;
+    let apiUrl = `/api/v1/publics/school/reports/grades/${data.id}`;
     let type = "DELETE";
     let baseUrl = window.location.origin;
 
@@ -136,9 +136,9 @@ window.rowAcep = (but) => {
     });
 
     if (!!Object.keys(fields).length) {
-        const ulrId = row.attr("data-url-uuid");
+        const ulrId = row.attr("data-url-id");
         if (!!ulrId) fields["id"] = ulrId;
-        fields["user_id"] = table.attr("data-school-report-id");
+        fields["school_report_id"] = table.attr("data-school-report-id");
         userInsertOrUpdate({ data: fields })
             .then((json) => {
                 IterarCamposEdit(cols, function (td) {
@@ -160,8 +160,9 @@ window.rowAcep = (but) => {
                         td.html("");
                     }
                 });
-                if (!row.attr("data-url-uuid")) {
-                    row.attr("data-url-uuid", json.user.id || json.id);
+
+                if (!row.attr("data-url-id")) {
+                    row.attr("data-url-id", json.data.id || json.id);
                 }
                 FijModoNormal(but);
                 params.onEdit(row);
@@ -213,7 +214,7 @@ window.rowCancel = (but) => {
         }
     });
 
-    const ulrId = row.attr("data-url-uuid");
+    const ulrId = row.attr("data-url-id");
     if (!!ulrId) {
         FijModoNormal(but);
     } else {
@@ -263,7 +264,7 @@ window.rowElim = (but) => {
     const table = $("#table-coop-details");
     const row = $(but).parents("tr");
     const cols = row.find("td");
-    const ulrId = row.attr("data-url-uuid");
+    const ulrId = row.attr("data-url-id");
 
     if (!!ulrId) {
         $.confirm({
@@ -276,8 +277,10 @@ window.rowElim = (but) => {
                     text: "Sim, confirmar exclusão",
                     action: () => {
                         let fields = {};
-                        if (!!ulrId) fields["id"] = row.attr("data-url-uuid");
-                        fields["user_id"] = table.attr("data-school-report-id");
+                        if (!!ulrId) fields["id"] = row.attr("data-url-id");
+                        fields["school_report_id"] = table.attr(
+                            "data-school-report-id"
+                        );
 
                         userDelete({ data: fields })
                             .then((json) => {
@@ -347,7 +350,7 @@ window.rowAddNew = (tabId) => {
     } else {
         let ultFila = tab_en_edic.find("tr:last");
         ultFila.clone().appendTo(ultFila.parent());
-        ultFila = tab_en_edic.find("tr:last").removeAttr("data-url-uuid");
+        ultFila = tab_en_edic.find("tr:last").removeAttr("data-url-id");
         const cols = ultFila.find("td");
         cols.each(function () {
             if (!($(this).attr("name") == "buttons")) {

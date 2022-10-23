@@ -14,10 +14,10 @@ class UpdateRequest extends BaseFormRequest
      */
     protected function prepareForValidation()
     {
-        $stub = $this->route('stub');
+        $stubId = $this->route('stub');
 
         $this->merge([
-            "stub" => $stub,
+            "id_stub" => $stubId,
         ]);
     }
 
@@ -29,7 +29,7 @@ class UpdateRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            "stub" => ["required", "integer", "exists:stubs,id,deleted_at,NULL"],
+            "id_stub" => ["required", "integer", "exists:stubs,id,deleted_at,NULL"],
         ];
     }
 
@@ -41,7 +41,7 @@ class UpdateRequest extends BaseFormRequest
     public function messages()
     {
         return [
-            "stub.exists" => ":attribute not found."
+            "id_stub.exists" => ":attribute not found."
         ];
     }
 
@@ -56,15 +56,10 @@ class UpdateRequest extends BaseFormRequest
         $validator->after(function ($validator) {
             if (!$validator->errors()->all()) {
 
-                $stub = Stub::find($this->stub);
-
-                $this->body = $this->validated();
-                $this->inputs = [];
-
-                foreach ($this->body as $key => $value) $this->inputs[$key] = $value;
+                $stub = Stub::find($this->id_stub);
 
                 $this->merge([
-                    'inputs' => $this->inputs,
+                    'inputs' => $this->all(),
                     'stub' => $stub,
                 ]);
             }

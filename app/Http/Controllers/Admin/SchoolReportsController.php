@@ -139,16 +139,15 @@ class SchoolReportsController extends Controller
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-
+//validate school_year unique for user and school_grade_id unique for school_year and school_level_id just required
         $request->validate([
             'school_year' => 'required|unique:school_reports,school_year,'.$id.',id,user_id,'.$user->id,
-            'school_level_id' => 'required|unique:school_reports,school_level_id,'.$id.',id,school_year,'.$request->school_year.',user_id,'.$user->id,
+            'school_level_id' => 'required',
             'school_grade_id' => 'required|unique:school_reports,school_grade_id,'.$id.',id,school_year,'.$request->school_year.',user_id,'.$user->id,
         ], [
             'school_year.required' => 'O campo ano letivo é obrigatório.',
             'school_year.unique' => 'Já existe um histórico escolar cadastrado para o ano letivo informado.',
             'school_level_id.required' => 'O campo nível escolar é obrigatório.',
-            'school_level_id.unique' => 'Já existe um histórico escolar cadastrado para o nível escolar informado.',
             'school_grade_id.required' => 'O campo série é obrigatório.',
             'school_grade_id.unique' => 'Já existe um histórico escolar cadastrado para a série informada.',
         ]);
