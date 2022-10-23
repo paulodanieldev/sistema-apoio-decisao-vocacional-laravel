@@ -48,7 +48,7 @@ class SchoolSubjectsController extends Controller
     {
         // create validation to name and slug unique wit custom messages pt_BR
         $request->validate([
-            'name' => 'required|unique:school_subjects,name',
+            'name' => 'required|unique:school_subjects,name,NULL,id,deleted_at,NULL',
         ], [
             'name.required' => 'O nome é obrigatório.',
             'name.unique' => 'O nome já existe.',
@@ -113,7 +113,7 @@ class SchoolSubjectsController extends Controller
     {
         // create validation to name and slug unique ignoring this register with custom messages pt_BR
         $request->validate([
-            'name' => 'required|unique:school_subjects,name,'.$id,
+            'name' => 'required|unique:school_subjects,name,'.$id.',id,deleted_at,NULL',
         ], [
             'name.required' => 'O nome é obrigatório.',
             'name.unique' => 'O nome já existe.',

@@ -43,7 +43,7 @@
             </a>
           </li>
           <li>
-            <a href="school-reports-data.html">
+            <a href="{{ route('admin.school-grades.index') }}">
               <i class="bi bi-circle"></i><span>Séries escolares</span>
             </a>
           </li>
