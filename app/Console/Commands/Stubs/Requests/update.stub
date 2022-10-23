@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Requests\Stub;
+
+use App\Models\Stub;
+use App\Http\Requests\BaseFormRequest;
+
+class UpdateRequest extends BaseFormRequest
+{
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $stub = $this->route('stub');
+
+        $this->merge([
+            "stub" => $stub,
+        ]);
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            "stub" => ["required", "integer", "exists:stubs,id,deleted_at,NULL"],
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            "stub.exists" => ":attribute not found."
+        ];
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if (!$validator->errors()->all()) {
+
+                $stub = Stub::find($this->stub);
+
+                $this->body = $this->validated();
+                $this->inputs = [];
+
+                foreach ($this->body as $key => $value) $this->inputs[$key] = $value;
+
+                $this->merge([
+                    'inputs' => $this->inputs,
+                    'stub' => $stub,
+                ]);
+            }
+        });
+    }
+}

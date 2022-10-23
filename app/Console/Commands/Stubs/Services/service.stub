@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Services;
+
+use App\Services\BaseService;
+use App\Interfaces\Services\StubInterface;
+use App\Interfaces\Repositories\StubInterface as StubRepositoryInterface;
+
+class StubService extends BaseService implements StubInterface
+{
+    protected $repository;
+
+    public function __construct(StubRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+}

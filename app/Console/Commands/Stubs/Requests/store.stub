@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Requests\Stub;
+
+use App\Http\Requests\BaseFormRequest;
+
+class StoreRequest extends BaseFormRequest
+{
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            "name" => ["required", "string", "max:255"],
+        ];
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if (!$validator->errors()->all()) {
+                $this->merge([
+                    'inputs' => [
+                        'name' => $this->name,
+                    ],
+                ]);
+            }
+        });
+    }
+}
