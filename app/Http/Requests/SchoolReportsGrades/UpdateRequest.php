@@ -16,8 +16,14 @@ class UpdateRequest extends BaseFormRequest
     {
         $grade = $this->route('grade');
 
+        // remove texts and change "," to "." from $this->final_grade_avg with regex
+        $final_grade_avg = preg_replace("/[^0-9.]/", "", $this->final_grade_avg);
+        $final_grade_avg = str_replace(",", ".", $final_grade_avg);
+        $final_grade_avg = preg_replace("/\.$/", "", $final_grade_avg);
+
         $this->merge([
             "id_grade" => $grade,
+            "final_grade_avg" => empty($final_grade_avg) ? null : $final_grade_avg
         ]);
     }
 
