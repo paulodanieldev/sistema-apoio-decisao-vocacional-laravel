@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SchoolReportGrades extends Model
+class SchoolReportsGrades extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -16,7 +16,7 @@ class SchoolReportGrades extends Model
      *
      * @var string
      */
-    protected $table = 'school_report_grades';
+    protected $table = 'school_reports_grades';
 
     /**
      * The attributes that are mass assignable.

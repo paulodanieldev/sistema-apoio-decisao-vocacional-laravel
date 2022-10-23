@@ -162,7 +162,7 @@
         </a>
         <ul id="school-reports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="school-reports-general.html">
+            <a href="{{ route('admin.school-reports.index') }}">
               <i class="bi bi-circle"></i><span>General School Reports</span>
             </a>
           </li>

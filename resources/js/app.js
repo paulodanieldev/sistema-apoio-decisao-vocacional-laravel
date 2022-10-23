@@ -13,6 +13,7 @@ import ApexCharts from "apexcharts";
 import { DataTable } from "simple-datatables";
 import tinymce from "tinymce/tinymce";
 import "tinymce/plugins/link";
+import "jquery-confirm/js/jquery-confirm";
 
 import * as echarts from "echarts";
 
