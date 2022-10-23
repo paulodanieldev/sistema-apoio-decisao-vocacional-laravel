@@ -21,7 +21,7 @@
         <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
 
-            <li class="nav-item d-block d-lg-none">
+            {{-- <li class="nav-item d-block d-lg-none">
             <a class="nav-link nav-icon search-bar-toggle " href="#">
                 <i class="bi bi-search"></i>
             </a>
@@ -100,9 +100,9 @@
 
             </ul><!-- End Notification Dropdown Items -->
 
-            </li><!-- End Notification Nav -->
+            </li><!-- End Notification Nav --> --}}
 
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
 
             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i class="bi bi-chat-left-text"></i>
@@ -166,7 +166,7 @@
 
             </ul><!-- End Messages Dropdown Items -->
 
-            </li><!-- End Messages Nav -->
+            </li><!-- End Messages Nav --> --}}
 
             <li class="nav-item dropdown pe-3">
 
@@ -192,7 +192,7 @@
                 <li>
                 <a class="dropdown-item d-flex align-items-center" href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
                     <i class="bi bi-person"></i>
-                    <span>My Profile</span>
+                    <span>Meu Perfil</span>
                 </a>
                 </li>
                 <li>

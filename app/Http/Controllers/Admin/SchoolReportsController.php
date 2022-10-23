@@ -185,7 +185,7 @@ class SchoolReportsController extends Controller
             SchoolReports::findOrFail($id)->delete();
             SchoolReportsGrades::where('school_report_id', $id)->delete();
 
-            return redirect()->route('admin.school-reports.index')->with('success', 'School Report deleted successfully');
+            return redirect()->route('admin.school-reports.index')->with('success', 'Histórico escolar excluído com sucesso.');
         } catch (\Exception $e) {
             return redirect()->route('admin.school-reports.index')->with('error', 'ERROR: ' . $e->getMessage());
         }

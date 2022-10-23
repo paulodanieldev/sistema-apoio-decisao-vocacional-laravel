@@ -186,7 +186,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
           <i class="bi bi-person"></i>
-          <span>Profile</span>
+          <span>Perfil</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

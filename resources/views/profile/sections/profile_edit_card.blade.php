@@ -7,7 +7,7 @@
       @method('PUT')
 
       <div class="row mb-3">
-        <label class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+        <label class="col-md-4 col-lg-3 col-form-label">Foto do perfil</label>
         <div class="col-md-8 col-lg-9">
           @if ($user->image && file_exists(public_path('uploads/profile/img/').$user->image))
             <img id="profile_image_preview" src="{{ asset('uploads/profile/img/'.$user->image ) }}" alt="Profile" class="rounded">
@@ -26,63 +26,63 @@
       </div>
 
       <div class="row mb-3">
-        <label for="name" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+        <label for="name" class="col-md-4 col-lg-3 col-form-label">Nome completo</label>
         <div class="col-md-8 col-lg-9">
           <input name="name" type="text" class="form-control" id="name" value="{{ $user->name }}" required>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+        <label for="about" class="col-md-4 col-lg-3 col-form-label">Sobre você</label>
         <div class="col-md-8 col-lg-9">
           <textarea name="about" class="form-control" id="about" style="height: 100px">{{ $user->about }}</textarea>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Telefone</label>
         <div class="col-md-8 col-lg-9">
           <input name="phone" type="text" class="form-control" id="phone" value="{{ $user->phone }}">
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+        <label for="Email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
         <div class="col-md-8 col-lg-9">
           <input name="email" type="email" class="form-control" id="email" value="{{ $user->email }}" disabled>
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="twitter_url" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+        <label for="twitter_url" class="col-md-4 col-lg-3 col-form-label">Twitter perfil</label>
         <div class="col-md-8 col-lg-9">
           <input name="twitter_url" type="text" class="form-control" id="twitter_url" value="{{ $user->twitter_url }}">
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="facebook_url" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+        <label for="facebook_url" class="col-md-4 col-lg-3 col-form-label">Facebook perfil</label>
         <div class="col-md-8 col-lg-9">
           <input name="facebook_url" type="text" class="form-control" id="facebook_url" value="{{ $user->facebook_url }}">
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="instagram_url" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+        <label for="instagram_url" class="col-md-4 col-lg-3 col-form-label">Instagram perfil</label>
         <div class="col-md-8 col-lg-9">
           <input name="instagram_url" type="text" class="form-control" id="instagram_url" value="{{ $user->instagram_url }}">
         </div>
       </div>
 
       <div class="row mb-3">
-        <label for="linkedin_url" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+        <label for="linkedin_url" class="col-md-4 col-lg-3 col-form-label">Linkedin perfil</label>
         <div class="col-md-8 col-lg-9">
           <input name="linkedin_url" type="text" class="form-control" id="linkedin_url" value="{{ $user->linkedin_url }}">
         </div>
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
       </div>
     </form><!-- End Profile Edit Form -->
   </div>
