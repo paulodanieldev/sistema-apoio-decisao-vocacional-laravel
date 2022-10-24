@@ -2,8 +2,8 @@
 
     <!-- ======= Header Scripts ======= -->
         <!-- Template Main CSS File -->
-        <link href="{{ asset('/css/theme.css?v=' . config('ASSETS_VERSION', '1.0')) }} }}" rel="stylesheet">
         <link href="{{ asset('/css/app.css?v=' . config('ASSETS_VERSION', '1.0')) }} }}" rel="stylesheet">
+        <link href="{{ asset('/css/theme.css?v=' . config('ASSETS_VERSION', '1.0')) }} }}" rel="stylesheet">
     <!-- End Header Scripts -->
     
 @endsection
