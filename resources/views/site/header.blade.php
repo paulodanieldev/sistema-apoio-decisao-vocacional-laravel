@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
-                <h1 class="logo me-auto me-lg-0"><a href="index.html">AVA - Vocacional</a></h1>
+                <h1 class="logo me-auto me-lg-0"><a href="{{ route('site') }}"><img src="{{ asset('media/dashboard/logo.png') }}" alt="logo" class="img-fluid"> AVA - Vocacional</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
