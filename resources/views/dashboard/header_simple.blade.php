@@ -4,9 +4,9 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('user.dashboard') }}" class="logo d-flex align-items-center">
+            <a href="{{ route( App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.dashboard') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('media/dashboard/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <span class="d-none d-lg-block">AVA - Vocacional</span>
             </a>
             {{-- <i class="bi bi-list toggle-sidebar-btn"></i> --}}
         </div><!-- End Logo -->
@@ -188,7 +188,7 @@
                     </li>
 
                     {{-- <li>
-                    <a class="dropdown-item d-flex align-items-center" href="{{ route('user.profile.index') }}">
+                    <a class="dropdown-item d-flex align-items-center" href="{{  App\Helpers\UserHelper::getUserAccountType(Auth::user()) . '.profile.index') }}">
                         <i class="bi bi-person"></i>
                         <span>My Profile</span>
                     </a>
@@ -216,7 +216,7 @@
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
+                            <span>Sair</span>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

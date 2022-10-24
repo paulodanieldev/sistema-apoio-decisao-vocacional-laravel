@@ -7,18 +7,29 @@
 
 require("./bootstrap");
 require("./dashboard/common");
+require("./bootstable/bootstable");
+require("./api");
 
 import Quill from "quill";
 import ApexCharts from "apexcharts";
 import { DataTable } from "simple-datatables";
 import tinymce from "tinymce/tinymce";
 import "tinymce/plugins/link";
+import "jquery-confirm/js/jquery-confirm";
 
 import * as echarts from "echarts";
 
 (function () {
     ("use strict");
 
+    window.onload = function () {
+        showPage();
+    };
+    function showPage() {
+        console.log("teste2");
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("site-dashboard").style.display = "block";
+    }
     /**
      * Easy selector helper function
      */

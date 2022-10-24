@@ -2,7 +2,10 @@
 /public/hot
 /public/storage
 /public/js/*
+/public/media/*
 /public/css/*
+/public/uploads/*
+/public/fonts/*
 /public/mix-manifest.json
 
 /storage/*.key

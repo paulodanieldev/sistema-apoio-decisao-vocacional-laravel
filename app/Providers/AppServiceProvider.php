@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interfaces\Services\SchoolReportsGradesInterface;
+use App\Services\SchoolReportsGradesService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(SchoolReportsGradesInterface::class, SchoolReportsGradesService::class);
     }
 
     /**

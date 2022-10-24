@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Http\Controllers\api\v1;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Stub\IndexRequest;
+use App\Http\Requests\Stub\ShowRequest;
+use App\Http\Requests\Stub\StoreRequest;
+use App\Http\Requests\Stub\UpdateRequest;
+use App\Http\Requests\Stub\DestroyRequest;
+use App\Http\Resources\DefaultResource;
+use App\Interfaces\Services\StubInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+
+class StubController extends Controller
+{
+    protected $service;
+
+    public function __construct(StubInterface $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * Returns all items
+     * @api {GET} /api/v1/stubs
+     * @param IndexRequest $request
+     * @return DefaultResource
+     */
+    public function index(IndexRequest $request): DefaultResource
+    {
+        $object = $this->service->all();
+
+        return new DefaultResource($object);
+    }
+
+    /**
+     * Returns a specific item
+     * @api {GET} /api/v1/stubs/{stub}
+     * @param ShowRequest $request
+     * @return DefaultResource
+     */
+    public function show(ShowRequest $request): DefaultResource
+    {
+        $object = $request->stub;
+
+        return new DefaultResource($object);
+    }
+
+    /**
+     * Create a new item
+     * @api {POST} /api/v1/stubs
+     * @param StoreRequest $request
+     * @return JsonResponse
+     */
+    public function store(StoreRequest $request): JsonResponse
+    {
+        $object = $this->service->create($request->inputs);
+
+        return (new DefaultResource($object))
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    /**
+     * Update a specific item
+     * @api {GET} /api/v1/stubs/{stub}
+     * @param UpdateRequest $request
+     * @return DefaultResource
+     */
+    public function update(UpdateRequest $request): DefaultResource
+    {
+        $object = $this->service->update($request->stub, $request->inputs);
+
+        return new DefaultResource($object);
+    }
+
+    /**
+     * Delete a specific item
+     * @api {GET} /api/v1/stubs/{stub}
+     * @param DestroyRequest $request
+     * @return JsonResponse
+     */
+    public function destroy(DestroyRequest $request): JsonResponse
+    {
+        $this->service->delete($request->stub);
+
+        return (new DefaultResource([]))
+            ->response()
+            ->setStatusCode(Response::HTTP_NO_CONTENT);
+    }
+}
