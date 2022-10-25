@@ -176,6 +176,11 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
 
+        /**
+         * HTTP User Agent service
+         */
+        Jenssegers\Agent\AgentServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +236,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // $_SERVER ['HTTP_USER_AGENT'] FUNCTIONS
+        'Agent' => Jenssegers\Agent\Agent::class,
     ],
 
     /*
