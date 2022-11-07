@@ -1,7 +1,7 @@
 @section('hero')
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" style="background: url({{ asset('media/hero-bg-2.jpg') }}) top center" class="d-flex flex-column justify-content-center">
+    <section id="hero" style="background: url({{ asset('media/hero-bg-3.jpg') }}) top center" class="d-flex flex-column justify-content-center">
         <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8">
